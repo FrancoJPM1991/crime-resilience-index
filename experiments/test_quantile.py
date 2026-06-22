@@ -1,4 +1,3 @@
-import pandas as pd
 from src.quantile import assign_quantiles
 from src.regime import regime_construction
 from src.data_loader import crime_rates
