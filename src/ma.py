@@ -4,9 +4,9 @@ import numpy as np
 
 def ma(mun, df_function, YEAR_BASE=2024, MA_WINDOW=3):
     df = df_function.copy()
-    history_df = df_function[
-        (df_function['year'] <= YEAR_BASE) & 
-        (df_function['CVEGEO'] == mun)
+    history_df = df[
+        (df['year'] <= YEAR_BASE) & 
+        (df['CVEGEO'] == mun)
     ].sort_values('year')
 
     history = history_df['crime_rate'].values
