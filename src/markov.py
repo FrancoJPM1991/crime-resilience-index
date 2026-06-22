@@ -47,7 +47,8 @@ def markov_prediction(df_function, YEAR_BASE=2024, N_STEPS=1, N_REGIMES=5, N_QUA
             })
     
     markov = pd.DataFrame(records)
+    markov = markov.rename(columns={'forecast_rate': 'markov'})
     print(f"\nMarkov forecast summary (n_steps={N_STEPS}, base_year={YEAR_BASE}):")
-    print(markov.groupby('regime')['forecast_rate'].describe().round(1))
+    print(markov.groupby('regime')['markov'].describe().round(1))
     return markov
 

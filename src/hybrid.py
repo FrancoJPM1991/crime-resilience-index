@@ -38,7 +38,7 @@ def hybrid(df_function, markov, model_name, YEAR_BASE=2024, STD_THRESHOLD=2, MA_
     print(f"\nOutlier anchor — {len(outliers)} municipalities flagged "
           f"(z > {STD_THRESHOLD} within their regime):")
     
-    target_col = 'forecast_rate'
+    target_col = 'markov'
 
     # 2. FIXED: Execute the functions dynamically inside the loop
     for mun in outliers:
@@ -52,5 +52,7 @@ def hybrid(df_function, markov, model_name, YEAR_BASE=2024, STD_THRESHOLD=2, MA_
                 estimate = selected_function(mun, df, YEAR_BASE=YEAR_BASE)
                 
             hybrid_df.loc[mask, target_col] = round(estimate, 2)
+
+    hybrid_df = hybrid_df.rename(columns={'markov': 'hybrid'})
 
     return hybrid_df
