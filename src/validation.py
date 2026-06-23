@@ -5,7 +5,7 @@ from scipy.stats import spearmanr, pearsonr
 
 def validate(predictions_df):
 
-    models = ['markov', 'hybrid', 'ols', 'ma', 'rd', 'persistence']
+    models = ['markov', 'hybrid', 'markov_fuzzy', 'ols', 'ma', 'rd', 'persistence']
     obs = predictions_df['observed'].values
     obs_mean  = obs.mean()
     obs_range = obs.max() - obs.min()
