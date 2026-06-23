@@ -1,7 +1,14 @@
+from src.data_loader import *
+
 YEAR_PREDICT = 2025
 YEAR_BASE = 2024
 
-N_REGIMES = 5
+START_YEAR = 2015
+MATRIX = w_contiguity()
+AUX_MODEL = 'ma'
+MIN_MUNI = 30
+
+N_REGIMES = 7
 N_QUANTILES = 5
 MA_WINDOW = 3
 N_STEPS = 1

@@ -3,11 +3,13 @@ import numpy as np
 from src.regime import regime_construction
 from src.quantile import assign_quantiles
 from src.transition import transition_matrix
+from src.thin_regimes import merge_thin_regimes
 
-def markov_prediction(df_function, YEAR_BASE=2024, N_STEPS=1, N_REGIMES=5, N_QUANTILES=5):
+def markov_prediction(df_function, YEAR_BASE=2024, N_STEPS=1, N_REGIMES=5, N_QUANTILES=5, MIN_MUNI=30):
 
     regime_dfs = regime_construction(df_function, N_REGIMES)
-    quantile_dfs = assign_quantiles(regime_dfs, N_QUANTILES)
+    merged_regimes_dfs = merge_thin_regimes(regime_dfs, MIN_MUNI)
+    quantile_dfs = assign_quantiles(merged_regimes_dfs, N_QUANTILES)
     transition_results = transition_matrix(quantile_dfs)
 
     records = []
