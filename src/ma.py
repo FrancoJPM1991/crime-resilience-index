@@ -14,9 +14,7 @@ def ma(mun, df_function, YEAR_BASE=2024, MA_WINDOW=3):
     window = min(MA_WINDOW, len(history))
     recent = history[-window:]
     weights = np.arange(1, window + 1, dtype=float)
-    ma_est = float(np.dot(weights, recent) / weights.sum())
+    ma_est = round(float(np.dot(weights, recent) / weights.sum()), 2)
 
     return ma_est
-
-
-                   
+ 

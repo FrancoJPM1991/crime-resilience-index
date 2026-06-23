@@ -12,6 +12,6 @@ def ols(mun, df_function, YEAR_BASE=2024):
     x = np.arange(len(history), dtype=float)
     result = stats.linregress(x, history)
     ols_est = result.intercept + result.slope * len(history)
-    ols_est = max(ols_est, 0.0)  # only floor at zero, not historical min
+    ols_est = round(max(ols_est, 0.0), 2)  
 
     return ols_est
