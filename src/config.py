@@ -1,18 +1,27 @@
-from src.data_loader import *
+# Paths
+DATA_INTERIM   = "data/interim"
+DATA_RAW_CRIME = "data/raw/crime"
+OUTPUT_DIR     = "results"
 
-YEAR_PREDICT = 2025
-YEAR_BASE = 2024
+# Time
+YEAR_PREDICT   = 2025
+YEAR_BASE      = 2024
+START_YEAR     = 2015
+OBSERVED_YEAR  = 2025
 
-START_YEAR = 2015
-MATRIX = w_contiguity()
-AUX_MODEL = 'ma'
-MIN_MUNI = 30
+# Model
+N_REGIMES      = 6
+N_QUANTILES    = 5
+N_STEPS        = 1
+MIN_MUNI       = 30
+BINS           = 5
+MA_WINDOW      = 9
+STD_THRESHOLD  = 2.0
+AUX_MODEL      = 'ma'
 
-BINS = 5
-
-N_REGIMES = 6
-N_QUANTILES = 7
-MA_WINDOW = 3
-N_STEPS = 1
-STD_THRESHOLD = 2.0
-OBSERVED_YEAR = 2025
+# CRI
+CRI_ALPHA      = 0.5
+CRI_BETA       = 0.3
+CRI_GAMMA      = 0.2
+USE_SPATIAL_LAG = True
+SPATIAL_LAMBDA = 0.2

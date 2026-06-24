@@ -1,5 +1,5 @@
 import pandas as pd
-from src.ols import ols
+from src.models.ols import ols
 from src.data_loader import crime_rates_regimes
 
 mun = "01001"

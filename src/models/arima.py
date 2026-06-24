@@ -25,10 +25,10 @@ def _fit_predict_one(series: pd.Series) -> float:
                 error_action='ignore',
             )
         forecast = model.predict(n_periods=1)
-        return float(forecast[0])
+        return round(float(forecast[0]), 2)
 
     except Exception:
-        return np.nan
+        return 0 #np.nan
 
 def run_arima(df: pd.DataFrame, START_YEAR=2015, YEAR_PREDICT=2025) -> pd.Series:
     train_df = df[
@@ -55,4 +55,5 @@ def run_arima(df: pd.DataFrame, START_YEAR=2015, YEAR_PREDICT=2025) -> pd.Series
         .set_index('CVEGEO')['arima']
     )
 
+    arima_series = arima_series.fillna(0)
     return arima_series

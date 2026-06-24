@@ -1,9 +1,9 @@
 import pandas as pd
 import numpy as np
-from src.regime import regime_construction
-from src.quantile_fuzzy import assign_quantiles
-from src.transition_fuzzy import transition_matrix
-from src.thin_regimes import merge_thin_regimes
+from src.models._regime import regime_construction
+from src.models._quantile_fuzzy import assign_quantiles
+from src.models._transition_fuzzy import transition_matrix
+from src.models._thin_regimes import merge_thin_regimes
 
 
 def markov_prediction_fuzzy(df_function, YEAR_BASE=2024, N_STEPS=1, N_REGIMES=5, N_QUANTILES=5, MIN_MUNI=30, BINS=5):

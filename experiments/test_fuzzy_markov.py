@@ -2,10 +2,10 @@ import itertools
 import warnings
 import pandas as pd
 import numpy as np
-from src.regime import regime_construction
-from src.quantile import assign_quantiles
-from src.transition import transition_matrix
-from src.thin_regimes import merge_thin_regimes
+from src.models.regime import regime_construction
+from src.models.quantile import assign_quantiles
+from src.models.transition import transition_matrix
+from src.models.thin_regimes import merge_thin_regimes
 
 # ---------------------------------------------------------------------------
 # Grid definition — edit ranges here

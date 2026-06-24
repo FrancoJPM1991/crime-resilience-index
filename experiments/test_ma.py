@@ -1,5 +1,5 @@
 import pandas as pd
-from src.ma import ma
+from src.models.ma import ma
 from src.data_loader import crime_rates_regimes
 
 mun = "01001"

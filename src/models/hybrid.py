@@ -1,6 +1,6 @@
 import numpy as np
-from src.ols import ols
-from src.ma import ma
+from src.models.ols import ols
+from src.models.ma import ma
 
 def hybrid(df_function, markov, model_name, YEAR_BASE=2024, STD_THRESHOLD=2, MA_WINDOW=3):
     df = df_function.copy()
