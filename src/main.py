@@ -11,6 +11,10 @@ from src.models.ols import ols
 from src.models.ma import ma
 from src.models.rd import rd
 from src.validation import validate
+from src.cri.cri_weights import build_regime_metadata
+from src.cri.cri_components import compute_cri_components
+from src.cri.cri_index import assemble_cri
+from src.cri.cri_output import export_cri
 
 base_rates = crime_rates()
 regime_rates = crime_rates_regimes()
@@ -45,6 +49,7 @@ wma_series = (
 print("***************************Calculating reaction - diffusion model***************************")
 rd_df = rd(base_rates, MATRIX, START_YEAR, YEAR_BASE)
 
+
 print("***************************Calculating ARIMA model***************************")
 arima_series = run_arima(crime_rates(), START_YEAR, YEAR_PREDICT)
 
@@ -74,8 +79,16 @@ benchmark_df = (
 
 results = validate(benchmark_df)
 
+
 benchmark_df.to_csv("results/predictions_benchmark.csv", index=False)
 print("\nFinal Predictions & Benchmarks Preview:")
 print(predictions_df.head())
 print(benchmark_df.head())
 print(results)
+
+
+print("***************************TESTING CRI***************************")
+metadata = build_regime_metadata()
+components = compute_cri_components(metadata, YEAR_BASE)
+assembly = assemble_cri(components, MATRIX, CRI_ALPHA, CRI_BETA, CRI_GAMMA, SPATIAL_LAMBDA)
+export_cri(assembly, True)

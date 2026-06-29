@@ -12,8 +12,6 @@ def regime_construction(df_function, N_REGIMES=5):
 
     df['regimes'] = pd.cut(df['norm_crime_rate'], bins=N_REGIMES, labels=list(range(N_REGIMES + 1)[1:]))
 
-    df.to_csv("data/interim/crime_rates_regimes.csv", index=False)
-
     regime_dfs = {}
 
     for regime in sorted(df['regimes'].unique().tolist()):

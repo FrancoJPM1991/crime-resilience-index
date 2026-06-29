@@ -30,6 +30,7 @@ def transition_matrix(regime_dfs: dict):
         T_df = pd.DataFrame(T, index=states, columns=states)
         T_df.index.name   = 'from_state'
         T_df.columns.name = 'to_state'
+        T_df.to_csv(f"data/interim/T_{name}.csv")
 
         # State means (one value per state, for defuzzification later)
         state_means = (

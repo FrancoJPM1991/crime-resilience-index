@@ -39,6 +39,16 @@ def assign_quantiles(regime_dfs: dict, N_QUANTILES=5):
         actual_states = sorted(df['state'].unique())
         print(f"{name}: {len(actual_states)} states | bins: {np.round(bins, 1)}")
         print(f"  State means: { {s: round(state_means[s], 1) for s in actual_states} }")
+        
+        state_meta = pd.DataFrame({
+            'regime': name,
+            'state': list(range(1, actual_n + 1)),
+            'mean': [round(state_means[s], 4) for s in range(1, actual_n + 1)],
+            'bin_lower': bins[:-1],
+            'bin_upper': bins[1:]
+        })
+        state_meta.to_csv(f"data/interim/state_meta_{name}.csv", index=False)
+        
         result[name] = df
 
     return result

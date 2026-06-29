@@ -38,4 +38,17 @@ def merge_thin_regimes(regime_dfs: dict, MIN_MUNI=30) -> dict:
         n = final[new_key]['CVEGEO'].nunique() if 'CVEGEO' in final[new_key].columns else len(final[new_key])
         print(f"  {new_key}: {n} unique municipalities")
 
+    # Save post-merge regime assignments to crime_rates_regimes.csv
+    regime_records = []
+    for regime_name, regime_df in final.items():
+        regime_num = int(regime_name.replace('df_regime', ''))
+        temp = regime_df.copy()
+        temp['regimes'] = regime_num
+        regime_records.append(temp)
+
+    regimes_df = pd.concat(regime_records, ignore_index=True)
+    regimes_df['CVEGEO'] = regimes_df['CVEGEO'].astype(str).str.zfill(5)
+    regimes_df.to_csv("data/interim/crime_rates_regimes.csv", index=False)
+    print("  crime_rates_regimes.csv updated with post-merge regime assignments.")
+    
     return final
