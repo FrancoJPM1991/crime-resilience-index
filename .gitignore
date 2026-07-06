@@ -3,7 +3,6 @@ cat >> .gitignore << 'EOF'
 data/raw/crime/*.csv
 data/raw/population/census_2010/*.csv
 data/raw/population/census_2020/*.csv
-data/interim/gravity_matrix_2025.csv
 
 # --- Files above GitHub recommended 50 MB (warnings) ---
 data/raw/geographic/municipalities/00mun.shp

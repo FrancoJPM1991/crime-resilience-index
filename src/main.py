@@ -17,13 +17,13 @@ from src.cri.cri_index import assemble_cri
 from src.cri.cri_output import export_cri
 
 base_rates = crime_rates()
-regime_rates = crime_rates_regimes()
 MATRIX = w_contiguity()
 
 print("***************************Calculating comparative benchmarks for all municipalities...********************************")
 
 print("***************************Calculating Markov Chain model***************************")
 markov = markov_prediction(crime_rates(), YEAR_BASE, N_STEPS, N_REGIMES, N_QUANTILES)
+regime_rates = crime_rates_regimes()
 
 print("***************************Calculating Fuzzy Markov model***************************")
 markov_fuzzy = markov_prediction_fuzzy(crime_rates(), YEAR_BASE, N_STEPS, N_REGIMES, N_QUANTILES, MIN_MUNI, BINS)

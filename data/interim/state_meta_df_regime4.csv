@@ -1,0 +1,6 @@
+regime,state,mean,bin_lower,bin_upper
+df_regime4,1,41.6111,39.0,44.0
+df_regime4,2,48.2865,44.0,52.0
+df_regime4,3,58.0435,52.0,64.0
+df_regime4,4,73.1856,64.0,84.0
+df_regime4,5,106.3654,84.0,137.0
